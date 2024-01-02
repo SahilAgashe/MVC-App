@@ -56,15 +56,39 @@
 		819BE1642B446F0300022A96 /* MVC-App */ = {
 			isa = PBXGroup;
 			children = (
-				819BE1652B446F0300022A96 /* AppDelegate.swift */,
-				819BE1672B446F0300022A96 /* SceneDelegate.swift */,
-				819BE1692B446F0300022A96 /* ViewController.swift */,
-				819BE16B2B446F0300022A96 /* Main.storyboard */,
-				819BE16E2B446F0400022A96 /* Assets.xcassets */,
-				819BE1702B446F0400022A96 /* LaunchScreen.storyboard */,
-				819BE1732B446F0400022A96 /* Info.plist */,
+				819BE1792B446F1000022A96 /* Application */,
+				819BE17B2B446F3E00022A96 /* Controller */,
+				819BE17A2B446F2200022A96 /* Supporting Files */,
 			);
 			path = "MVC-App";
+			sourceTree = "<group>";
+		};
+		819BE1792B446F1000022A96 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				819BE1652B446F0300022A96 /* AppDelegate.swift */,
+				819BE1672B446F0300022A96 /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		819BE17A2B446F2200022A96 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				819BE16B2B446F0300022A96 /* Main.storyboard */,
+				819BE1702B446F0400022A96 /* LaunchScreen.storyboard */,
+				819BE16E2B446F0400022A96 /* Assets.xcassets */,
+				819BE1732B446F0400022A96 /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		819BE17B2B446F3E00022A96 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				819BE1692B446F0300022A96 /* ViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -294,7 +318,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4CJW76Y9FL;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "MVC-App/Info.plist";
+				INFOPLIST_FILE = "MVC-App/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -322,7 +346,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4CJW76Y9FL;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "MVC-App/Info.plist";
+				INFOPLIST_FILE = "MVC-App/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
