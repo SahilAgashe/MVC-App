@@ -16,6 +16,8 @@
 		819BE17D2B44858800022A96 /* DailyTaskTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819BE17C2B44858800022A96 /* DailyTaskTableCell.swift */; };
 		819BE1812B449E3C00022A96 /* DailyTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819BE1802B449E3C00022A96 /* DailyTask.swift */; };
 		819BE1832B449F7A00022A96 /* ExerciseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819BE1822B449F7A00022A96 /* ExerciseType.swift */; };
+		81B8F3E82B44F53C008FAB2F /* TableSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B8F3E72B44F53C008FAB2F /* TableSection.swift */; };
+		81B8F3EA2B44F5FF008FAB2F /* TableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B8F3E92B44F5FF008FAB2F /* TableHeader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		819BE17C2B44858800022A96 /* DailyTaskTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTaskTableCell.swift; sourceTree = "<group>"; };
 		819BE1802B449E3C00022A96 /* DailyTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTask.swift; sourceTree = "<group>"; };
 		819BE1822B449F7A00022A96 /* ExerciseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseType.swift; sourceTree = "<group>"; };
+		81B8F3E72B44F53C008FAB2F /* TableSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableSection.swift; sourceTree = "<group>"; };
+		81B8F3E92B44F5FF008FAB2F /* TableHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableHeader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +106,7 @@
 		819BE17E2B44882400022A96 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				81B8F3E92B44F5FF008FAB2F /* TableHeader.swift */,
 				819BE17C2B44858800022A96 /* DailyTaskTableCell.swift */,
 			);
 			path = View;
@@ -112,6 +117,7 @@
 			children = (
 				819BE1802B449E3C00022A96 /* DailyTask.swift */,
 				819BE1822B449F7A00022A96 /* ExerciseType.swift */,
+				81B8F3E72B44F53C008FAB2F /* TableSection.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -187,10 +193,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81B8F3E82B44F53C008FAB2F /* TableSection.swift in Sources */,
 				819BE16A2B446F0300022A96 /* ViewController.swift in Sources */,
 				819BE1812B449E3C00022A96 /* DailyTask.swift in Sources */,
 				819BE1662B446F0300022A96 /* AppDelegate.swift in Sources */,
 				819BE17D2B44858800022A96 /* DailyTaskTableCell.swift in Sources */,
+				81B8F3EA2B44F5FF008FAB2F /* TableHeader.swift in Sources */,
 				819BE1682B446F0300022A96 /* SceneDelegate.swift in Sources */,
 				819BE1832B449F7A00022A96 /* ExerciseType.swift in Sources */,
 			);

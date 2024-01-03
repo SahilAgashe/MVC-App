@@ -18,12 +18,13 @@ class ViewController: UIViewController {
     }()
     
     private lazy var tableView: UITableView = {
-        let tableView = UITableView()
+        let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "tableCell")
         tableView.backgroundColor = .clear
+        tableView.showsVerticalScrollIndicator = false
         return tableView
     }()
     
@@ -98,19 +99,33 @@ extension ViewController: UITableViewDataSource {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-         if section == 2 {
-            return "Must Do For Your Goals"
-        } else if section == 3 {
-            return "Activity Routine"
-        } else {
-            return ""
-        }
-    }
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//         if section == 2 {
+//            return "Must Do For Your Goals"
+//        } else if section == 3 {
+//            return "Activity Routine"
+//        } else {
+//            return ""
+//        }
+//    }
+    
+
 }
 
 extension ViewController: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        TableHeader(frame: .zero, titleForHeader: TableSection(rawValue: section)?.title ?? "")
+        
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == TableSection.dailyTask.rawValue || section == TableSection.activityRoutine.rawValue {
+            return 50
+        } else {
+            return 0
+        }
+    }
     
 }
 

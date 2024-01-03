@@ -18,3 +18,5 @@ enum ExerciseType: Int {
         }
     }
 }
+
+
