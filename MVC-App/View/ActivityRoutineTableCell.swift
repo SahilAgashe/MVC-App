@@ -29,7 +29,7 @@ class ActivityRoutineTableCell: UITableViewCell {
         titleLabel.text = activityRoutineTask.title
         activityThemeLabel.text = activityRoutineTask.theme.description
         xPLabel.text = "⚡ \(activityRoutineTask.xpValue) XP"
-        durationLabel.text = " 🕑 \(activityRoutineTask.duration) mins"
+        durationLabel.text = " 🕑 \(Int(activityRoutineTask.duration)) mins"
     }
 
 }

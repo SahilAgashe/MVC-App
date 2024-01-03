@@ -13,14 +13,15 @@ class TableHeader: UIView {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .boldSystemFont(ofSize: 20)
+        label.numberOfLines = 0
         return label
     }()
     
     // MARK: - Initializers
-    init(frame: CGRect, titleForHeader: String = "") {
+    init(frame: CGRect, titleForHeader: String = "", font: UIFont = .boldSystemFont(ofSize: 20)) {
         super.init(frame: frame)
         self.titleLabel.text = titleForHeader
+        self.titleLabel.font = font
         setupUI()
     }
     
@@ -34,6 +35,7 @@ class TableHeader: UIView {
         addSubview(titleLabel)
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
     }

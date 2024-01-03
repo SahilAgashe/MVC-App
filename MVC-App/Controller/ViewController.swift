@@ -45,7 +45,9 @@ class ViewController: UIViewController {
     
     // MARK: - Selectors
     @objc private func reminderBarButtonItemAction() {
-        
+        let nav = UINavigationController(rootViewController: ReminderListController())
+        nav.modalPresentationStyle = .fullScreen
+        present(nav, animated: true)
     }
     
     // MARK: - Helpers
@@ -91,6 +93,7 @@ class ViewController: UIViewController {
 
 }
 
+// MARK: - UITableViewDataSource
 extension ViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -136,6 +139,7 @@ extension ViewController: UITableViewDataSource {
     
 }
 
+// MARK: - UITableViewDelegate
 extension ViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
