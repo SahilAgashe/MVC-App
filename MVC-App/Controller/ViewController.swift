@@ -22,16 +22,24 @@ class ViewController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "tableCell")
+        
+        let activityRoutineCellNib = UINib(nibName: "ActivityRoutineTableCell", bundle: nil)
+        tableView.register(activityRoutineCellNib, forCellReuseIdentifier: "ActivityRoutineTableCell")
+        
         tableView.backgroundColor = .clear
         tableView.showsVerticalScrollIndicator = false
+        tableView.separatorStyle = .none
         return tableView
     }()
+    
+    var dailyTasks = [DailyTask]()
+    var activityRoutineTasks = [ActivityRoutineTask]()
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        updateDatabase()
     }
     
     
@@ -68,48 +76,64 @@ class ViewController: UIViewController {
         ]
         NSLayoutConstraint.activate(tableViewConstraints)
     }
+    
+    private func updateDatabase() {
+        dailyTasks = [
+            .init(title: "Day2: Steps To Recharge", type: .meditation, coach: "Muskaan", xpValue: 10, duration: 16),
+            .init(title: "Traditional Suryanamaskar", type: .workout, coach: "", xpValue: 10, duration: 16)
+        ]
+        
+        activityRoutineTasks = [
+            .init(title: "Gratitude", theme: .journal, xpValue: 10, duration: 1),
+            .init(title: "For Inner Peace", theme: .music, xpValue: 10, duration: 1)
+        ]
+    }
 
 }
 
 extension ViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        4
+        TableSection.allCases.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 3 { return 2}
-        else { return 1 }
+        if section == TableSection.activityRoutine.rawValue {
+            return  activityRoutineTasks.count
+        }
+        else { 
+            return 1
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell") else {
-            return UITableViewCell()
+        
+        if indexPath.section == TableSection.activityRoutine.rawValue {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "ActivityRoutineTableCell") as? ActivityRoutineTableCell else {
+                return UITableViewCell()
+            }
+            let backgroundImageName = indexPath.row % 2 == 0 ? "redGradient" : "purple"
+            let activityRoutineTask = activityRoutineTasks[indexPath.row]
+            cell.setupInterface(activityRoutineTask: activityRoutineTask, backgroundImageName: backgroundImageName)
+            cell.backgroundColor = .clear
+            cell.selectionStyle = .none
+            return cell
+        }
+        else if indexPath.section == TableSection.dailyTask.rawValue {
+            let cell = UITableViewCell()
+
+            cell.contentConfiguration = UIHostingConfiguration(content: {
+                DailyTaskTableCell(dailyTasks: dailyTasks)
+            })
+            cell.backgroundColor = .clear
+            cell.selectionStyle = .none
+            return cell
         }
         
-        let dailyTasks: [DailyTask] = [
-            .init(title: "Day2: Steps To Recharge", type: .meditation, coach: "Muskaan", xpValue: 10, duration: 16),
-            .init(title: "Traditional Suryanamaskar", type: .workout, coach: "", xpValue: 10, duration: 16)
-        ]
-        cell.contentConfiguration = UIHostingConfiguration(content: {
-            DailyTaskTableCell(dailyTasks: dailyTasks)
-        })
-        cell.backgroundColor = .clear
-        
+        let cell = UITableViewCell()
         return cell
     }
     
-//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//         if section == 2 {
-//            return "Must Do For Your Goals"
-//        } else if section == 3 {
-//            return "Activity Routine"
-//        } else {
-//            return ""
-//        }
-//    }
-    
-
 }
 
 extension ViewController: UITableViewDelegate {
@@ -124,6 +148,14 @@ extension ViewController: UITableViewDelegate {
             return 50
         } else {
             return 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == TableSection.dailyTask.rawValue {
+            return 200
+        } else {
+            return 126
         }
     }
     

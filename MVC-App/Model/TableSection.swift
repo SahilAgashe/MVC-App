@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum TableSection: Int {
+enum TableSection: Int, CaseIterable {
     case myLevelDetail
     case renewLevelPremium
     case dailyTask
