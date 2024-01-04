@@ -26,6 +26,8 @@ class ViewController: UIViewController {
         let activityRoutineCellNib = UINib(nibName: "ActivityRoutineTableCell", bundle: nil)
         tableView.register(activityRoutineCellNib, forCellReuseIdentifier: "ActivityRoutineTableCell")
         
+        tableView.register(RenewPremiumCell.self, forCellReuseIdentifier: "RenewPremiumCell")
+        
         tableView.backgroundColor = .clear
         tableView.showsVerticalScrollIndicator = false
         tableView.separatorStyle = .none
@@ -111,13 +113,11 @@ extension ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if indexPath.section == TableSection.activityRoutine.rawValue {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "ActivityRoutineTableCell") as? ActivityRoutineTableCell else {
+        if indexPath.section == TableSection.renewLevelPremium.rawValue {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "RenewPremiumCell") as? RenewPremiumCell else {
                 return UITableViewCell()
             }
-            let backgroundImageName = indexPath.row % 2 == 0 ? "redGradient" : "purple"
-            let activityRoutineTask = activityRoutineTasks[indexPath.row]
-            cell.setupInterface(activityRoutineTask: activityRoutineTask, backgroundImageName: backgroundImageName)
+            cell.setLabelText(text: "Your Level premium is about to expire, renew now!")
             cell.backgroundColor = .clear
             cell.selectionStyle = .none
             return cell
@@ -128,6 +128,17 @@ extension ViewController: UITableViewDataSource {
             cell.contentConfiguration = UIHostingConfiguration(content: {
                 DailyTaskTableCell(dailyTasks: dailyTasks)
             })
+            cell.backgroundColor = .clear
+            cell.selectionStyle = .none
+            return cell
+        }
+        else if indexPath.section == TableSection.activityRoutine.rawValue {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "ActivityRoutineTableCell") as? ActivityRoutineTableCell else {
+                return UITableViewCell()
+            }
+            let backgroundImageName = indexPath.row % 2 == 0 ? "redGradient" : "purple"
+            let activityRoutineTask = activityRoutineTasks[indexPath.row]
+            cell.setupInterface(activityRoutineTask: activityRoutineTask, backgroundImageName: backgroundImageName)
             cell.backgroundColor = .clear
             cell.selectionStyle = .none
             return cell
@@ -144,7 +155,6 @@ extension ViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         TableHeader(frame: .zero, titleForHeader: TableSection(rawValue: section)?.title ?? "")
-        
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -156,10 +166,17 @@ extension ViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == TableSection.dailyTask.rawValue {
+        if indexPath.section == TableSection.renewLevelPremium.rawValue {
+            return 90
+        }
+        else if indexPath.section == TableSection.dailyTask.rawValue {
             return 200
-        } else {
+        } 
+        else if indexPath.section == TableSection.activityRoutine.rawValue {
             return 126
+        }
+        else {
+            return 20
         }
     }
     

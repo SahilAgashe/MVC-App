@@ -32,8 +32,6 @@ class ReminderListController: UIViewController {
     }()
     
     private var reminderArray = [Reminder]()
-    //private let addReminderController = AddReminderController()
-    //var addNewReminderHandler: ((Reminder) -> ())?
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -59,7 +57,6 @@ class ReminderListController: UIViewController {
     
     // MARK: - Helpers
     private func setupUI() {
-        //rgb(245,243,254)
         title = "Reminder"
         view.backgroundColor = .reminderTheme
         navigationItem.leftBarButtonItem = backBarButtonItem
@@ -68,7 +65,6 @@ class ReminderListController: UIViewController {
         view.addSubview(addReminderButton)
         let constraints = [
             // reminderTable
-            
             reminderTable.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             reminderTable.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             reminderTable.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -86,6 +82,7 @@ class ReminderListController: UIViewController {
 
 }
 
+// MARK: - UITableViewDataSource
 extension ReminderListController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         reminderArray.count
@@ -103,6 +100,7 @@ extension ReminderListController: UITableViewDataSource {
     }
 }
 
+// MARK: - UITableViewDelegate
 extension ReminderListController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
        return TableHeader(frame: .zero, titleForHeader: "Set a reminder to stay on track with your routine. We'll remind you to be awesome 🙌", font: .systemFont(ofSize: 17))
