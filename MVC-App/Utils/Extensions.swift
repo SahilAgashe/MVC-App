@@ -13,6 +13,7 @@ extension UIColor {
         return  UIColor(red: red / 255, green: green / 255, blue: blue / 255, alpha: 1)
     }
     
-    static let reminderTheme = UIColor.rgb(245, 243, 254)
+    static let reminderTheme = UIColor.rgb(248, 243, 254)
+    static let reminderButtonTheme = UIColor.rgb(115, 85, 231)
 
 }

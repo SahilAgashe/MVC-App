@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 class ReminderListController: UIViewController {
     
@@ -20,18 +21,19 @@ class ReminderListController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.backgroundColor = .clear
+        tableView.separatorStyle = .none
         return tableView
     }()
     
     private lazy var addReminderButton = {
-        let btn = UIButton()
-        btn.translatesAutoresizingMaskIntoConstraints = false
-        btn.setTitle("+ Add reminder", for: .normal)
-        btn.setTitleColor(.white, for: .normal)
-        btn.backgroundColor = .rgb(115, 85, 231)
-        btn.addTarget(self, action: #selector(addReminderButtonAction), for: .touchUpInside)
-        return btn
+        let button = getReminderThemeButton(withTitle: "+ Add reminder")
+        button.addTarget(self, action: #selector(addReminderButtonAction), for: .touchUpInside)
+        return button
     }()
+    
+    private var reminderArray = [Reminder]()
+    //private let addReminderController = AddReminderController()
+    //var addNewReminderHandler: ((Reminder) -> ())?
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -42,14 +44,18 @@ class ReminderListController: UIViewController {
     // MARK: - Selectors
     @objc private func addReminderButtonAction() {
         print("DEBUG: addReminderButtonAction called...")
-        navigationController?.pushViewController(SettingReminderController(), animated: true)
+        let reminderController = AddReminderController()
+        reminderController.addNewReminderHandler = { [weak self] reminder in
+            self?.reminderArray.append(reminder)
+            self?.reminderTable.reloadData()
+        }
+        navigationController?.pushViewController(reminderController, animated: true)
     }
     
     @objc private func backBarButtonItemAction() {
         print("DEBUG: backBarButtonItemAction called...")
         dismiss(animated: true)
     }
-    
     
     // MARK: - Helpers
     private func setupUI() {
@@ -77,21 +83,24 @@ class ReminderListController: UIViewController {
         ]
         NSLayoutConstraint.activate(constraints)
     }
-    
 
-    
-
-    
 }
 
 extension ReminderListController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       1
+        reminderArray.count
    }
    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       return UITableViewCell()
-   }
+        let cell = UITableViewCell()
+        let reminder = reminderArray[indexPath.row]
+        cell.contentConfiguration = UIHostingConfiguration(content: {
+            ReminderTableCell(reminder: reminder)
+        })
+        cell.backgroundColor = .clear
+        cell.selectionStyle = .none
+        return cell
+    }
 }
 
 extension ReminderListController: UITableViewDelegate {
