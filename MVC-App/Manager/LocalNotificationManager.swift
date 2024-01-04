@@ -30,8 +30,20 @@ class LocalNotificationManager: NSObject {
         }
     }
     
-    func addNotification(content: UNNotificationContent,trigger: UNNotificationTrigger?, notificationIdentifier: String) {
-        // Step-4 Create the request and schedule the request with the system.
+    func addNotification(content: UNNotificationContent,trigger: UNNotificationTrigger, notificationIdentifier: String) {
+        let snoozeAction = UNNotificationAction(identifier: "snoozeAction", title: "Snooze", options: UNNotificationActionOptions.init())
+        let stopAction = UNNotificationAction(identifier: "stopAction", title: "Stop", options: UNNotificationActionOptions.init())
+        
+        if trigger.repeats {
+            let alarmCategryWithSnooze = UNNotificationCategory(identifier: "alarmCategory", actions: [snoozeAction,stopAction], intentIdentifiers: [], hiddenPreviewsBodyPlaceholder: "", options: .customDismissAction)
+            currentNotificationCenter.setNotificationCategories([alarmCategryWithSnooze])
+        }
+        else {
+            let alarmCategryWithoutSnooze = UNNotificationCategory(identifier: "alarmCategory", actions: [stopAction], intentIdentifiers: [], hiddenPreviewsBodyPlaceholder: "", options: .customDismissAction)
+            currentNotificationCenter.setNotificationCategories([alarmCategryWithoutSnooze])
+        }
+        
+        // Create the request and schedule the request with the system.
         let request = UNNotificationRequest(identifier: notificationIdentifier, content: content, trigger: trigger)
         currentNotificationCenter.add(request, withCompletionHandler: {
             (error) in
@@ -52,7 +64,6 @@ extension LocalNotificationManager: UNUserNotificationCenterDelegate {
 
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         
-        //UIApplication.shared.applicationIconBadgeNumber = 0
         UNUserNotificationCenter.current().setBadgeCount(0)
         let request = response.notification.request
         
@@ -67,7 +78,6 @@ extension LocalNotificationManager: UNUserNotificationCenterDelegate {
         }
         else if response.actionIdentifier == "stopAction" {
             removeNotification(notificationIdentifier: request.identifier)
-            //delegate?.turnOffAlarmSwitch(alarmIdentifier: request.identifier)
         }
         completionHandler()
     }

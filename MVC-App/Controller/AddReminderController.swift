@@ -166,21 +166,10 @@ class AddReminderController: UIViewController {
         content.categoryIdentifier = "alarmCategory"
         
         // Create the notification trigger
-        let snoozeAction = UNNotificationAction(identifier: "snoozeAction", title: "Snooze", options: UNNotificationActionOptions.init())
-        let stopAction = UNNotificationAction(identifier: "stopAction", title: "Stop", options: UNNotificationActionOptions.init())
         let alarmDate: Date = datePicker.date
         let alarmDateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: alarmDate)
-        
         let trigger = UNCalendarNotificationTrigger(dateMatching: alarmDateComponents, repeats: snoozeSwitch.isOn)
-//        if trigger.repeats {
-//            let alarmCategryWithSnooze = UNNotificationCategory(identifier: "alarmCategory", actions: [snoozeAction,stopAction], intentIdentifiers: [], hiddenPreviewsBodyPlaceholder: "", options: .customDismissAction)
-//            currentNotificationCenter.setNotificationCategories([alarmCategryWithSnooze])
-//        }
-//        else {
-//            let alarmCategryWithoutSnooze = UNNotificationCategory(identifier: "alarmCategory", actions: [stopAction], intentIdentifiers: [], hiddenPreviewsBodyPlaceholder: "", options: .customDismissAction)
-//            currentNotificationCenter.setNotificationCategories([alarmCategryWithoutSnooze])
-//        }
-        
+
         let formatter = DateFormatter()
         formatter.dateFormat = "hh:mm"
         let timeString = formatter.string(from: alarmDate)
