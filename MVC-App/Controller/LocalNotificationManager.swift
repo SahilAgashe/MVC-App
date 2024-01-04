@@ -14,7 +14,13 @@ class LocalNotificationManager: NSObject {
     
     private override init() {
         super.init()
-        // Step-1 Request permission to display notifications
+        currentNotificationCenter.delegate = self
+        print("DEBUG LocalNotificationManager: init called...")
+    }
+   
+    // MARK: - Helpers
+    public func requestAuthorization() {
+        // Request permission to display notifications
         currentNotificationCenter.requestAuthorization(options: [.badge, .sound, .alert]) { (permissionGranted, error) in
             if permissionGranted{
                 print("DEBUG LocalNotificationManager: Notication permission granted")
@@ -22,16 +28,8 @@ class LocalNotificationManager: NSObject {
                 print("DEBUG LocalNotificationManager: Notication permission denied")
             }
         }
-        currentNotificationCenter.delegate = self
-        
-        
-    
-        print("DEBUG LocalNotificationManager: init called...")
     }
     
-    
-   
-    // MARK: - Helpers
     func addNotification(content: UNNotificationContent,trigger: UNNotificationTrigger?, notificationIdentifier: String) {
         // Step-4 Create the request and schedule the request with the system.
         let request = UNNotificationRequest(identifier: notificationIdentifier, content: content, trigger: trigger)

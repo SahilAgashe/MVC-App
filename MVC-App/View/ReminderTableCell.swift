@@ -15,17 +15,21 @@ struct ReminderTableCell: View {
         HStack() {
             Spacer()
             
-            VStack {
-                Text(reminder.title)
-                    .font(.system(size: 17, weight: .medium))
-                
-                Text(reminder.message)
-                    .font(.system(size: 18, weight: .regular))
-                
-                HStack(spacing: 20) {
+            VStack() {
+                HStack(spacing: 10) {
                     Text(reminder.timeString)
-                        .font(.system(size: 20, weight: .semibold))
-                    Text(reminder.dateString).font(.system(size: 18, weight: .regular))
+                        .font(.system(size: 22, weight: .semibold))
+                    Text(reminder.dateString).font(.system(size: 19, weight: .regular))
+                }
+                
+                if !reminder.title.isEmpty {
+                    Text(reminder.title)
+                        .font(.system(size: 18, weight: .medium))
+                }
+                
+                if !reminder.message.isEmpty {
+                    Text(reminder.message)
+                        .font(.system(size: 18, weight: .regular))
                 }
             }
             
@@ -48,6 +52,8 @@ struct ReminderTableCell: View {
     }
 }
 
-//#Preview {
-//    ReminderTableCell()
-//}
+#Preview {
+    var reminder = Reminder(identifier: "", title: "Suryanamskar time!", message: "I need to do 3 times", timeString: "08:00", dateString: "Fri, 05 Jan")
+    reminder.isSnooze = true
+    return ReminderTableCell(reminder: reminder)
+}

@@ -184,7 +184,7 @@ class AddReminderController: UIViewController {
         let formatter = DateFormatter()
         formatter.dateFormat = "hh:mm"
         let timeString = formatter.string(from: alarmDate)
-        formatter.dateFormat = "EEEE, MMM d"
+        formatter.dateFormat = "EEE, MMM d"
         let dateString = formatter.string(from: alarmDate)
         let identifier = UUID().uuidString
         var reminder = Reminder(identifier: identifier, title: title, message: message, timeString: timeString, dateString: dateString)
