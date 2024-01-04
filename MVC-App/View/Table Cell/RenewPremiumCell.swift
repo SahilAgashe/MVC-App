@@ -64,8 +64,8 @@ class RenewPremiumCell: UITableViewCell {
         
         NSLayoutConstraint.activate([
             // backgroundView
-            backgroundView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-            backgroundView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+            backgroundView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            backgroundView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             backgroundView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
             backgroundView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
             

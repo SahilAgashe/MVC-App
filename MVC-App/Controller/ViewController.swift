@@ -113,7 +113,17 @@ extension ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if indexPath.section == TableSection.renewLevelPremium.rawValue {
+        if indexPath.section == TableSection.myLevelDetail.rawValue {
+            let cell = UITableViewCell()
+
+            cell.contentConfiguration = UIHostingConfiguration(content: {
+                MyLevelDetailCell()
+            })
+            cell.backgroundColor = .clear
+            cell.selectionStyle = .none
+            return cell
+        }
+        else if indexPath.section == TableSection.renewLevelPremium.rawValue {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "RenewPremiumCell") as? RenewPremiumCell else {
                 return UITableViewCell()
             }
@@ -176,7 +186,7 @@ extension ViewController: UITableViewDelegate {
             return 126
         }
         else {
-            return 20
+            return 70
         }
     }
     

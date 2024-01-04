@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		811AA8D92B471217009BDB0D /* RenewPremiumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811AA8D82B471217009BDB0D /* RenewPremiumCell.swift */; };
+		811AA8DC2B471FA7009BDB0D /* MyLevelDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811AA8DB2B471FA7009BDB0D /* MyLevelDetailCell.swift */; };
 		818504E02B45A70C008EB707 /* ActivityRoutineTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818504DF2B45A70C008EB707 /* ActivityRoutineTask.swift */; };
 		818504FB2B45C870008EB707 /* ReminderListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818504FA2B45C870008EB707 /* ReminderListController.swift */; };
 		818504FD2B45C889008EB707 /* AddReminderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818504FC2B45C889008EB707 /* AddReminderController.swift */; };
@@ -33,6 +34,7 @@
 
 /* Begin PBXFileReference section */
 		811AA8D82B471217009BDB0D /* RenewPremiumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenewPremiumCell.swift; sourceTree = "<group>"; };
+		811AA8DB2B471FA7009BDB0D /* MyLevelDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLevelDetailCell.swift; sourceTree = "<group>"; };
 		818504DF2B45A70C008EB707 /* ActivityRoutineTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityRoutineTask.swift; sourceTree = "<group>"; };
 		818504FA2B45C870008EB707 /* ReminderListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderListController.swift; sourceTree = "<group>"; };
 		818504FC2B45C889008EB707 /* AddReminderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReminderController.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 				81B8F3EB2B4512AE008FAB2F /* ActivityRoutineTableCell.swift */,
 				81B8F3EC2B4512AE008FAB2F /* ActivityRoutineTableCell.xib */,
 				81A666EE2B465AA4003ADEC6 /* ReminderTableCell.swift */,
+				811AA8DB2B471FA7009BDB0D /* MyLevelDetailCell.swift */,
 			);
 			path = "Table Cell";
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 				818504FD2B45C889008EB707 /* AddReminderController.swift in Sources */,
 				819BE16A2B446F0300022A96 /* ViewController.swift in Sources */,
 				819BE1812B449E3C00022A96 /* DailyTask.swift in Sources */,
+				811AA8DC2B471FA7009BDB0D /* MyLevelDetailCell.swift in Sources */,
 				81B8F3ED2B4512AE008FAB2F /* ActivityRoutineTableCell.swift in Sources */,
 				819BE1662B446F0300022A96 /* AppDelegate.swift in Sources */,
 				819BE17D2B44858800022A96 /* DailyTaskTableCell.swift in Sources */,
