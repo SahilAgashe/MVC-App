@@ -13,8 +13,8 @@ enum ActivityRoutineTheme {
     
     var description: String {
         switch self {
-        case .journal: return ""
-        case .music: return ""
+        case .journal: return "Journal"
+        case .music: return "Music"
         }
     }
 }
