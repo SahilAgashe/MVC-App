@@ -1,9 +1,11 @@
-![Simulator Screenshot - iPhone 15 - 2024-01-05 at 17 26 25](https://github.com/SahilAgashe/MVC-App/assets/90738086/e3cda105-4170-4369-bd09-c25c9b46a819)# MVC App
-
+# MVC App
 For screenshots and app exection video,
 drive link: https://drive.google.com/drive/folders/1HoEGfa6gN6hVf7BL258biHGebHB7hUfJ?usp=sharing
 
+
 I am adding screenshots here, kindly have look at this also.
+![Simulator Screenshot - iPhone 15 - 2024-01-05 at 17 26 25](https://github.com/SahilAgashe/MVC-App/assets/90738086/e3cda105-4170-4369-bd09-c25c9b46a819)
+
 ![Simulator Screenshot - iPhone 15 - 2024-01-05 at 17 26 25](https://github.com/SahilAgashe/MVC-App/assets/90738086/03a7777a-020e-4745-b6c9-1beedafae5ad)
 ![Simulator Screenshot - iPhone 15 - 2024-01-05 at 17 26 25](https://github.com/SahilAgashe/MVC-App/assets/90738086/2be8697d-421e-4c1a-b5b5-4802debd7969)
 
